@@ -18,12 +18,11 @@ public class ConnectionTest {
 
  public static void main(String[] args) {
   try {
-      // jdbc:sqlserver://localhost:1433;databaseName=AdventureWorks;integratedSecurity=true;
+    // jdbc:sqlserver://localhost:1433;databaseName=AdventureWorks;integratedSecurity=true;
     String dbURL = "jdbc:sqlserver://localhost;databaseName=TestPrograming;integratedSecurity=true;";
     Connection conn = DriverManager.getConnection(dbURL);
     if (conn != null) {
       System.out.println("Connected");
- 
       DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
       System.out.println("Driver name: " + dm.getDriverName());
       System.out.println("Driver version: " + dm.getDriverVersion());
