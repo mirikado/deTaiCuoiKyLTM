@@ -55,7 +55,8 @@ public class LoginForm {
             e.printStackTrace();
         }
     }
-    public static String ten="",email="";
+    public static String ten = "", email = "";
+
     public void initialize() {
         frmLogin = new JFrame();
         frmLogin.setTitle("Login Form");
@@ -93,26 +94,25 @@ public class LoginForm {
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                 String strUsername = txtUsername.getText().trim();
-        String strPassword = String.valueOf(txtPassword.getPassword()).trim();
-         String cautruyvan="select * from Users where Username= '"+strUsername+"' and Password= '"+strPassword+"'";
-          ResultSet rs= Laptrinhmang.connection.ExcuteQueryGetTable(cautruyvan); 
+                String strUsername = txtUsername.getText().trim();
+                String strPassword = String.valueOf(txtPassword.getPassword()).trim();
+                String cautruyvan = "select * from Users where Username= '" + strUsername + "' and Password= '" + strPassword + "'";
+                ResultSet rs = Laptrinhmang.connection.ExcuteQueryGetTable(cautruyvan);
 
-               if(KiemTra(strUsername, strPassword)){
-                  Laptrinhmang.frmAdmin.show();
-                   this.dispose();
+                if (KiemTra(strUsername, strPassword)) {
+//                    Laptrinhmang.frmAdmin.show();
+                    new QuizForm(strUsername).setVisible(true);
 //ThongBao("Đăng nhập thành công", "Đăng nhập", 2);
-               } else {
-                   ThongBao("Bạn nhập sai tài khoản hoặc mật khẩu", "Lỗi đăng nhập", 2);
-               }
-                
+                } else {
+                    ThongBao("Bạn nhập sai tài khoản hoặc mật khẩu", "Lỗi đăng nhập", 2);
+                }
+
             }
 
             private void dispose() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
-          
         });
         btnLogin.setIcon(
                 new ImageIcon("C:\\Users\\Nho Xuan\\Documents\\NetBeansProjects\\Laptrinhmang\\icon\\User-Interface-Login-icon (1).png"));
@@ -123,8 +123,9 @@ public class LoginForm {
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                RegisterForm frmDK=new RegisterForm();
+                RegisterForm frmDK = new RegisterForm();
                 frmDK.show();
+
                 this.dispose();
             }
 
@@ -135,13 +136,15 @@ public class LoginForm {
         btnRegister.setIcon(new ImageIcon("C:\\Users\\Nho Xuan\\Documents\\NetBeansProjects\\Laptrinhmang\\icon\\Register-icon (1).png"));
         btnRegister.setBounds(277, 141, 96, 30);
         frmLogin.getContentPane().add(btnRegister);
-        
+
     }
-     private void ThongBao(String noiDungThongBao, String tieuDeThongBao, int icon) {
+
+    private void ThongBao(String noiDungThongBao, String tieuDeThongBao, int icon) {
         JOptionPane.showMessageDialog(new JFrame(), noiDungThongBao,
                 tieuDeThongBao, icon);
     }
-      private boolean KiemTra(String tdn, String mk) {
+
+    private boolean KiemTra(String tdn, String mk) {
         boolean kq = false;
 
         String cautruyvan = "select * from Users where Username= '" + tdn + "' and Password= '" + mk + "'";
@@ -151,8 +154,8 @@ public class LoginForm {
         try {
             if (rs.next()) {
                 kq = true;
-                ten=rs.getString("Username");
-                email=rs.getString("email");
+                ten = rs.getString("Username");
+                email = rs.getString("email");
                 System.out.println(" " + ten);
             }
         } catch (SQLException ex) {
