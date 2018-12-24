@@ -5,7 +5,7 @@
  */
 package myapp;
 
-import myapp.Login.Login;
+import myapp.myForm.Login;
 
 /**
  *

@@ -6,6 +6,7 @@
 package myapp;
 
 import javax.swing.JFrame;
+import myapp.myForm.TestForm;
 
 /**
  *
@@ -98,8 +99,11 @@ public class Main extends javax.swing.JFrame {
 
     private void jButtonTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTestActionPerformed
         // TODO add your handling code here:
-      
-
+        dispose();
+        TestForm tf = new TestForm();
+                tf.setVisible(true);
+                tf.getData();
+                tf.getQuestions();
     }//GEN-LAST:event_jButtonTestActionPerformed
 
     private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
